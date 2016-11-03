@@ -1,0 +1,49 @@
+<?php 
+
+	if(isset($this->previous)){
+		echo '<a href="'.$this->url(array('page' => $this->first)).'">Beginning </a>';	
+	} else {
+		echo 'Beginning ';
+	}
+
+	if(isset($this->previous)){
+		echo '<a href="'.$this->url(array('page' => $this->previous)).'"> &lt;Previous</a>';	
+	}
+		
+	foreach ($this->pagesInRange as $page){
+		if($this->current != $page){
+			echo ' <a href="'.$this->url(array('page' => $page)).'">'.$page.'</a> |';
+		} else {
+			echo ' '.$page.' |';
+		}
+	}
+
+	if(isset($this->next)){
+		echo '<a href="'.$this->url(array('page' => $this->next)).'"> Next&gt;</a>';	
+	}
+
+	if(isset($this->next)){
+		echo '<a href="'.$this->url(array('page' => $this->last)).'"> End</a>';	
+	} else {
+		echo ' End';
+	}
+echo '</br>';
+?>
+<div class="pagination">
+  <ul>
+  	<?php 
+  		if (isset($this->previous)){
+  			echo '<li><a href="'.$this->url(array('page' => $this->previous)).'">Өмнөх</a></li>';
+  		} else echo '<li><a href="#">Өмнөх</a></li>';
+  		
+  		foreach ($this->pagesInRange as $page){
+			if ($this->current != $page){
+				echo '<li><a href="'.$this->url(array('page' => $page)).'">'.$page.'</a></li>';
+			} else {
+				echo '<li><a href="#">'.$page.'</a></li>';
+			}
+		}
+  	?>  	
+    <li><a href="#">Дараах</a></li>
+  </ul>
+</div>

@@ -1,0 +1,322 @@
+<?php echo $this->doctype(); ?>
+<html ng-app="webixApp">
+<head>
+	<?php echo $this->headMeta(); ?>
+	<?php echo $this->headTitle(); ?>
+	<?php // echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/style.css');?>
+	
+	<?php
+//	if($this->jQuery()->isEnabled()){
+//		$this->jQuery()->setLocalPath($this->baseUrl().'/js/jquery/js/jquery-1.8.2.js')
+//						->setUiLocalPath($this->baseUrl().'/js/jquery/js/jquery-ui-1.9.0.custom.js')
+//						->addStylesheet($this->baseUrl().'/js/jquery/css/redmond/jquery-ui-1.9.0.custom.css');
+//		echo $this->jQuery();
+//	}
+//	
+	?>
+	
+	<script type="text/javascript" src="<?php echo $this->baseUrl();?>/js/angular.min.js"></script>
+	<?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/js/codebase/webix.css');?>
+	<script type="text/javascript" src="<?php echo $this->baseUrl();?>/js/codebase/webix.js"></script>
+	<script type="text/javascript" src="http://webix.com/demos/common/nav.js?v=20"></script>
+	<link rel="stylesheet" type="text/css" href="http://webix.com/demos/common/nav.css?v=20">
+	
+  	<script type="text/javascript">
+  	//	var app = angular.module('webixApp', [ "webix" ]);
+  	</script>
+</head>
+
+
+<body>
+
+<!--<a href="<?php echo $this->url(array('controller'=>'Languageswitch','action'=>'switch','lang'=>'en'))?>">English</a>-->
+<!--<a href="<?php echo $this->url(array('controller'=>'Languageswitch','action'=>'switch','lang'=>'ru'))?>">Russion</a>-->
+
+<style>
+	body{
+		background: #F2EFEA;
+	}
+	.transparent{
+		background-color: transparent;
+	}
+	a.check_flight{
+		color:  #367ddc;
+	}
+	.webix_el_box .webixtype_form {
+		color: #fff;
+	}
+	.webix_el_counter .webix_inp_counter_prev, .webix_el_counter .webix_inp_counter_next {
+		color: #fff;
+	}
+	.webix_el_counter .webix_inp_counter_next {
+		line-height: 28px;
+	}
+</style>
+
+<script type="text/javascript">
+	var selectedID=0;
+	var cities = [
+		{id:1, value:"Berlin"}, {id:2, value:"Kiev"}, {id:3, value:"Minsk"},
+		{id:4, value:"Moscow"}, {id:5, value:"Prague"}, {id:6, value:"Riga"},
+		{id:7, value:"St.Petersburg"}, {id:8, value:"Tallin"}, {id:9, value:"Vilnius"},{id:10, value:"Warsaw"}
+	];
+
+	var offers = [
+		{id:1, gloss:"a long thin piece of cloth or paper as used for binding or fastening", words:"tape"},
+		{id:2, gloss:"measuring instrument consisting of a narrow strip (cloth or metal) marked in inches or centimeters and used for measuring lengths", words: "tape, tapeline, tape measure"},
+	
+	];
+
+	var flight_selector = {
+		width: 360,
+		multi:false, rows:[
+			{header:"Question", body:{
+				view:"form", id:"ask" ,  elements:[
+					{	view:"radio", 
+						id:"radio1", 
+						vertical: true, 
+						options:[{id:1, value:"Yes, the exact match is found.", width:300}, {id:2, value:"No, nothing found.", width:300}, {id:3, value:"I don't know", width:300}],
+						on:{
+						  	"onChange":function() {
+						    	//alert($$("radio1").getValue());
+						    }
+						  }
+					},
+					{view:"button", id:"buttonSubmit", type:"form", value:"Done & Next", inputWidth:140, align: "center"}, {}
+				],
+				elementsConfig:{ 
+					labelWidth:100, labelAlign:"left"
+				}
+			}},
+			{header:"Login & Register", collapsed:true, body:{
+				view:"form", elements:[
+					{view:"text", label:"Real Name", labelWidth:120, placeholder:"Matthew Clark"},
+					{view:"text", label:"Email", labelWidth:120, placeholder:"mattclark@some.com"},
+					{view:"text", label:"Username", labelWidth:120, placeholder:"Matt"},
+					{view:"text", label:"Password", type:"password", labelWidth:120, placeholder:"********"},
+					{view:"text", label:"Confirm Password", type:"password", labelWidth:120, placeholder:"********"},
+					{cols: [{view:"button", value:"Register", type:"form", inputWidth:100, align:"center"},{view:"button", value:"Login", type:"form", inputWidth:100, align:"center"}]}
+				],
+				elementsConfig:{labelAlign:"left" }
+			}}
+		]
+	};
+	
+	var special_offers = {
+		gravity:3, rows:[
+			{type:"header", css: "webix_header rounded_top", template:"WordNet Synsets"},
+			{
+				view: "datatable", select:true,
+				id: "myDataTable", 
+				columns:[
+					{id:"id", header:"#", width:40},
+					{id:"pos", header:"POS", width:80},
+					{id:"words", header:"Words", width:222},
+					{id:"gloss", header:"Gloss", fillspace:true },
+					{id:"sim_gloss", header:"Sim(Gloss)", width:100, css:{'text-align':'center'}},
+					{id:"sim_words", header:"Sim(Words)", width:100, css:{'text-align':'center'}},
+				],
+				fixedRowHeight:false,  rowLineHeight:25, rowHeight:100,
+				data: offers,
+				onClick:{
+					"check_flight":function(){
+						
+						return false;
+					}
+				},
+				ready:function(){
+					this.select("3");
+				}, on:{
+	                onAfterLoad: function(){
+	                  webix.delay(function(){
+	                  	this.adjustRowHeight("gloss", true); 
+	                    this.render();
+	                  }, this);
+	                },
+	                onColumnResize:function(){
+	                  	this.adjustRowHeight("gloss", true);
+	                    this.render();
+	                }
+	              }
+			}
+		]
+	};
+
+	var omega_wiki = {
+			gravity:3, rows:[
+				{type:"header", css: "webix_header rounded_top", template:"OmegaWiki Concept"},
+				{
+					view: "datatable",
+					id: "myWikiTable", 
+					columns:[
+						{id:"id", header:"#", width:40},
+						{id:"words", header:"Words", width:222},
+						{id:"gloss", header:"Definition", fillspace:true }
+					],
+					fixedRowHeight:false,  rowLineHeight:25, rowHeight:100,
+					data: offers,
+					ready:function(){
+						this.select("3");
+					}, on:{
+		                onAfterLoad:function(){
+		                  webix.delay(function(){
+		                  	this.adjustRowHeight("gloss", true); 
+		                    this.render();
+		                  }, this);
+		                },
+		                onColumnResize:function(){
+		                  	this.adjustRowHeight("gloss", true);
+		                    this.render();
+		                }
+		              }
+				}
+			]
+		};
+
+	var question_bar = {
+
+			rows:[
+				{
+					type: "space",
+					rows:[omega_wiki, special_offers]
+				}
+			]
+		};
+
+	var lang = {
+		view:"popup", id:"lang",
+		head:false, width: 100,
+		body:{
+			view:"list", scroll:false, 
+			yCount:4, select:true, borderless:true,
+			template:"#lang#",
+			data:[
+				{id:1, lang:"English"},
+				{id:2, lang:"French"},
+				{id:3, lang:"German"},
+				{id:4, lang:"Russian"}
+			],
+			on:{"onAfterSelect":function(){
+				$$("lang").hide();
+			}}
+		}
+	};
+
+	var ui = {
+		rows:[{
+				type: "space",
+				rows:[	{ view:"toolbar", height: 45,elements:[
+					{view:"label", template: "<div style='font-size:18px;line-height:40px; margin-left:-4px;'>Linguarena: OmegaWiki and WordNet Alignment Crowdsourcing</div>"},{},
+					{view:"icon", icon:"user"},
+					{view:"icon", icon:"calendar"},
+					{view:"icon", icon:"cog", popup:"lang"}
+
+				]},
+				{autoheight:true, type: "wide", cols:[question_bar,flight_selector]}]
+			}
+		]
+	};
+
+	function before_next(text){
+	     //alert(text);
+  	 	 webix.ajax().post("<?php echo $this->baseUrl();?>/index.php/omega/next", {format:"json"} ,after_call);
+	}
+
+	function after_call(text){
+	     response = JSON.parse(text);
+	     //special_offers.render(response.candidates);
+	     $$('myDataTable').clearAll();
+	     $$('myWikiTable').clearAll();
+	     $$('myWikiTable').add({
+				id: 1,
+				gloss: response.omegaWiki.gloss,
+				words: response.omegaWiki.words
+		 });
+		 //alert(response.omegaWiki.gloss);
+	     for (i=0;i< response.candidates.length;i++){
+	    	 $$('myDataTable').add({
+				id: i+1,
+				rid: response.candidates[i].id,
+				pos: response.candidates[i].synset_id.substring(0,4),
+				gloss: response.candidates[i].gloss,
+				words: response.candidates[i].words,
+				sim_gloss: response.candidates[i].sim_gloss,
+				sim_words: response.candidates[i].sim_words
+		   	 });
+		 }
+
+	     $$('myDataTable').adjustRowHeight("gloss", true);
+	     $$('myDataTable').adjustRowHeight("words", true);  
+	     $$('myDataTable').render();
+	     $$('myWikiTable').adjustRowHeight("gloss", true);
+	     $$('myWikiTable').adjustRowHeight("words", true);
+	     $$('myWikiTable').render();
+	     $$('myDataTable').attachEvent("onAfterSelect", function (data, preserve){
+	    	selectedID=data.id-1;
+		  	//alert(data.id+" "+response.candidates[data.id-1].id+" "+response.omegaWiki.id);
+		 });
+	     $$('myWikiTable').attachEvent("onItemClick", function (data, preserve){
+	    	 location.href='http://www.omegawiki.org/DefinedMeaning:'+response.omegaWiki.id;
+		 });
+
+	     
+	};
+	 
+	webix.ready(function(){
+
+		 webix.ui(ui);
+		 webix.ui(lang);
+
+		 $$("radio1").attachEvent("onChange", function(newv, oldv){
+				if(newv == 2)
+					$$("datepicker2").show();
+				else 
+					$$("datepicker2").hide();
+			});
+		
+		
+		
+		webix.ajax().post("<?php echo $this->baseUrl();?>/index.php/omega/next", {format:"json"} ,after_call);
+
+		var myEvent = $$("buttonSubmit").attachEvent("onItemClick", function(){
+	    	 //alert(response.candidates[selectedID].id+" "+response.omegaWiki.id);
+	    	 //alert("duudlaa");
+	    	 if ($$("radio1").getValue()==1) {
+	    		 //alert(response.candidates[selectedID].id+" "+response.omegaWiki.id);
+	    		   // do something
+	    		 webix.ajax().post("<?php echo $this->baseUrl();?>/index.php/omega/vote", {"omega_id":response.omegaWiki.id,"cid":response.candidates[selectedID].id} ,before_next);  
+			 } else webix.ajax().post("<?php echo $this->baseUrl();?>/index.php/omega/vote", {"omega_id":response.omegaWiki.id,"cid":-1} ,before_next);
+	     });
+		
+	});
+
+</script>
+
+<!--<div webix-ui type="space">
+	<div height="35">Header {{app}}</div>
+	<div view="cols" type="wide" margin="10">
+		
+		<div view="resizer"></div>
+		<div view="tabview">
+			<div header="Tab1">
+				<?php echo $this->layout()->content; ?>
+			</div>
+			<div header="Tab2">
+				2. Other content here
+			</div>
+		</div>
+		<div width="200">
+			<input type="text" placeholder="Type something here" ng-model="app">
+		</div>
+	</div>
+	<div height="35">Footer</div>
+</div>
+
+--><?php 
+//$partial_menu = array('menu.phtml', 'default');
+//$this->navigation()->menu()->setPartial($partial_menu);
+//echo $this->navigation()->menu()->render(); ?>
+
+
+</body>
+</html>

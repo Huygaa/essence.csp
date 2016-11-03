@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<nav>
+		<logout>
+			<label>Logout</label>
+			<module>default</module>
+			<controller>authentication</controller>
+			<action>logout</action>
+			<resource>default:authentication</resource>
+			<privilege>logout</privilege>
+		</logout>
+		
+		<login>
+			<label>Login</label>
+			<module>default</module>
+			<controller>authentication</controller>
+			<action>login</action>
+			<resource>default:authentication</resource>
+			<privilege>login</privilege>
+		</login>
+		
+		<books>
+			<label>Books</label>
+			<uri>#</uri>
+			<resource>library:books</resource>
+			<privilege>index</privilege>
+			<pages>
+				<list>
+					<label>List</label>
+					<module>library</module>
+					<controller>books</controller>
+					<action>list</action>
+				</list>
+			</pages>
+		</books>
+		
+		<book>
+			<label>Book</label>
+			<uri>#</uri>
+			<resource>admin:book</resource>
+			<privilege>index</privilege>
+			<pages>
+				<add>
+					<label>Add</label>
+					<module>admin</module>
+					<controller>book</controller>
+					<action>add</action>
+				</add>
+				<edit>
+					<label>Edit</label>
+					<module>admin</module>
+					<controller>book</controller>
+					<action>edit</action>
+				</edit>
+				<delete>
+					<label>Delete</label>
+					<module>admin</module>
+					<controller>book</controller>
+					<action>delete</action>
+				</delete>
+			</pages>
+		</book>
+		
+	</nav>	
+</config>

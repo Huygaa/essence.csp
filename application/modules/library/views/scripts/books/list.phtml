@@ -1,0 +1,24 @@
+<?php 
+
+$this->jQuery()->enable();
+
+//foreach($this->paginator as $book) {
+//	echo $book['title'].' <b>by</b> '.$book['author'].'</br>';
+//}
+echo $this->translate->_('Books').":";
+echo $this->translate->_('Zahirgaa');
+foreach($this->paginator as $book){
+	echo $this->accordionPane('books', 
+							  'written by '.$book['author'],
+							  array('title' => $book['title'])
+							  );
+}
+
+echo $this->accordionContainer('books', 
+								array('active' => 'none', 'collapsible' => 'true')
+								);
+
+?>
+<p></p>
+<?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml');?>
+
