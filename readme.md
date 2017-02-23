@@ -21,23 +21,22 @@ Follow the below steps in order to run this platform.
 1. Download [MAMP server](https://www.mamp.info/en/downloads/)
 2. Run the MAMP server manually on your localhost using the port 8888.
 3. Open the terminal in MAC OSX (open cmd in Windows).
-4. 
-```
+4. ```
 MAC OSX 
 run in the terminal: 
 cd /Applications/MAMP/htdocs 
 mkdir essence
 
-WINDOWS 
+Windows 
 run in the cmd: 
 cd C:\MAMP\htdocs\ 
 mkdir essence
 
-```
-   Copy all the project files into the following folder:
-   /Applications/MAMP/htdocs/essence/ (MAC OSX)
-   cd C:\MAMP\htdocs\essence\ (Windows)
+Copy all the project files into the following folder:
+(MAC OSX): /Applications/MAMP/htdocs/essence/ 
+(Windows): C:\MAMP\htdocs\essence\ 
 
+```
 5. Access to phpMyAdmin. http://localhost:8888/phpMyAdmin/
 6. Create a mysql database titled "omega2wn".
 7. Import the omega2wn.sql file into the database "omega2wn".   
