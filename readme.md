@@ -2,6 +2,10 @@
 
 This platform asks users whether WordNet synset and Omegawiki synset are matched in the given task.
 
+<div align="center">
+  <img src="https://www.tensorflow.org/images/tf_logo_transp.png"><br><br>
+</div>
+
 # Installation:
 Follow the below steps in order to run this platform.
 
