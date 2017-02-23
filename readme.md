@@ -11,9 +11,9 @@ In below example, an user is asked to choose one of two WordNet synsets that mos
 As can be seen from here, an user can select one of the three answers, placed in the right side. 
 
 ## Web Frameworks:
-* Zend Framework
-* Webix
-* Angularjs
+* [Zend Framework v.1.2](https://framework.zend.com/manual/1.12/en/manual.html)
+* [Webix v.3.0.6](http://webix.com/)
+* [Angularjs v1.1.5](https://angularjs.org/)
 
 ## Installation:
 Follow the below steps in order to run this platform.
