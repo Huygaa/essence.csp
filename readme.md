@@ -3,7 +3,7 @@
 This platform asks users whether WordNet synset and Omegawiki synset are matched in the given task.
 
 <div align="center">
-  <img src="https://www.tensorflow.org/images/tf_logo_transp.png"><br><br>
+  <img src="https://1.bp.blogspot.com/-o6SEkJenA20/WK8PMfS7kCI/AAAAAAAABDc/2LNhUJ86s-UNk-ZWGhqeIwBSre_Oxi7zACLcB/s1600/map.png"><br><br>
 </div>
 
 # Installation:
