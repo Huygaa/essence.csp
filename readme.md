@@ -1,4 +1,6 @@
-This is a crowdsourcing platform that asks users whether WordNet synset and Omegawiki synset are matched.
+# Crowdsourcing Platform on Omegawiki and Wordnet synset alignments
+
+This platform asks users whether WordNet synset and Omegawiki synset are matched in the given task.
 
 # Installation:
 Follow the below steps in order to run this platform.
