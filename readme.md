@@ -43,3 +43,6 @@ Copy all the project files into the following folder:
 * Now it is ready on http://localhost/essence/public/
 
 ### Thanks for the attention.
+
+## LICENSE
+[CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en)
