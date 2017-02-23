@@ -1,9 +1,9 @@
 This is a crowdsourcing platform that asks users whether WordNet synset and Omegawiki synset are matched.
 
-Installation:
+# Installation:
 Follow the below steps in order to run this platform.
 
-1. Download MAMP server from https://www.mamp.info/en/downloads/
+1. Download [MAMP server](https://www.mamp.info/en/downloads/)
 2. Run the MAMP server manually on your localhost using the port 8888.
 3. Open the terminal in MAC OSX (open cmd in Windows).
 4. MAC OSX run: cd /Applications/MAMP/htdocs 
