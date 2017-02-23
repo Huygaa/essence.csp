@@ -10,7 +10,12 @@ In below example, an user is asked to choose one of two WordNet synsets that mos
 
 As can be seen from here, an user can select one of the three answers, placed in the right side. 
 
-# Installation:
+## Web Frameworks:
+* Zend Framework
+* Webix
+* Angularjs
+
+## Installation:
 Follow the below steps in order to run this platform.
 
 1. Download [MAMP server](https://www.mamp.info/en/downloads/)
