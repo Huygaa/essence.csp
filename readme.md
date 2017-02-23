@@ -21,7 +21,6 @@ Follow the below steps in order to run this platform.
 * Download [MAMP server](https://www.mamp.info/en/downloads/)
 * Run the MAMP server manually on your localhost using the port 8888.
 * Open the terminal in MAC OSX (open cmd in Windows).
-* 
 ```
 MAC OSX 
 run in the terminal: 
