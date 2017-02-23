@@ -13,9 +13,9 @@ class Plugin_AccessCheck extends Zend_Controller_Plugin_Abstract{
 		$resource = $request->getControllerName();
 		$action = $request->getActionName();
 		
-		if(!$this->_acl->isAllowed(Zend_Registry::get('role'), $module.':'.$resource, $action)){
-			$request->setControllerName('authentication')
-					->setActionName('login');
-		}
+// 		if(!$this->_acl->isAllowed(Zend_Registry::get('role'), $module.':'.$resource, $action)){
+// 			$request->setControllerName('authentication')
+// 					->setActionName('login');
+// 		}
 	}
 }
