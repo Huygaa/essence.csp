@@ -1,6 +1,7 @@
 # Crowdsourcing Platform on Omegawiki and Wordnet synset alignments
 
 This platform asks users whether WordNet synset and Omegawiki synset are matched in the given task.
+In below example, an user is asked to choose one of two WordNet synsets that most likely matches with OmegaWiki Concept Definition.
 
 <div align="center">
   <img src="https://1.bp.blogspot.com/-o6SEkJenA20/WK8PMfS7kCI/AAAAAAAABDc/2LNhUJ86s-UNk-ZWGhqeIwBSre_Oxi7zACLcB/s1600/map.png"><br><br>
