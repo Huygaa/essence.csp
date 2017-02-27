@@ -40,9 +40,16 @@ Copy all the project files into the following folder:
 * Access to phpMyAdmin. http://localhost:8888/phpMyAdmin/
 * Create a mysql database titled "omega2wn".
 * Import the omega2wn.sql file into the database "omega2wn".
-* Configure the database connection, and Open the file 
+* Configure the database connection, and Open the file application/configs/application.ini
 ```
+Fill the following configurations according to the settings in your machine.
 
+resources.db.params.host = localhost
+resources.db.params.username = root
+resources.db.params.password = 
+resources.db.params.dbname = omega2wn
+
+```
 
 * Now it is ready on http://localhost/essence/public/
 
