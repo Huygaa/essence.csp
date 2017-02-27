@@ -42,7 +42,7 @@ After that, you should find the index.php file in /Applications/MAMP/htdocs/esse
 * Access to phpMyAdmin. http://localhost:8888/phpMyAdmin/
 * Create a mysql database titled "omega2wn".
 * Import the omega2wn.sql file into the database "omega2wn".
-* Configure the database connection, and Open the file /htdocs/.the.project-folder./application/configs/application.ini
+* Open the file /htdocs/essence/application/configs/application.ini in order to configure the database connection
 ```
 Fill the following configurations according to the settings in your machine.
 
