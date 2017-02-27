@@ -18,7 +18,7 @@ As can be seen from here, an user can select one of the three answers, placed in
 ## Installation:
 Follow the below steps in order to run this platform.
 
-* Download [MAMP server](https://www.mamp.info/en/downloads/)
+* Download and Install [MAMP server](https://www.mamp.info/en/downloads/)
 * Run the MAMP server manually on your localhost using the port 8888.
 * Open the terminal in MAC OSX (open cmd in Windows).
 ```
@@ -36,11 +36,13 @@ Copy all the project files into the following folder:
 (MAC OSX): /Applications/MAMP/htdocs/essence/ 
 (Windows): C:\MAMP\htdocs\essence\ 
 
+After that, you should find the index.php file in /Applications/MAMP/htdocs/essence/public/ folder if it is MAC OSX.
+
 ```
 * Access to phpMyAdmin. http://localhost:8888/phpMyAdmin/
 * Create a mysql database titled "omega2wn".
 * Import the omega2wn.sql file into the database "omega2wn".
-* Configure the database connection, and Open the file application/configs/application.ini
+* Configure the database connection, and Open the file /htdocs/.the.project-folder./application/configs/application.ini
 ```
 Fill the following configurations according to the settings in your machine.
 
@@ -51,7 +53,7 @@ resources.db.params.dbname = omega2wn
 
 ```
 
-* Now it is ready on http://localhost/essence/public/
+* Now it is ready on http://localhost:8888/essence/public/
 
 
 
