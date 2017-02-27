@@ -39,8 +39,14 @@ Copy all the project files into the following folder:
 ```
 * Access to phpMyAdmin. http://localhost:8888/phpMyAdmin/
 * Create a mysql database titled "omega2wn".
-* Import the omega2wn.sql file into the database "omega2wn".   
+* Import the omega2wn.sql file into the database "omega2wn".
+* Configure the database connection, and Open the file 
+```
+
+
 * Now it is ready on http://localhost/essence/public/
+
+
 
 ### Thanks for the attention.
 
